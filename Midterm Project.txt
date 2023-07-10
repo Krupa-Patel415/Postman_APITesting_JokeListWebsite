@@ -1,0 +1,627 @@
+{
+	"info": {
+		"_postman_id": "dbea37c8-3311-44f4-bcdd-0f4bc01eafc9",
+		"name": "JokeApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21779869"
+	},
+	"item": [
+		{
+			"name": "Hello World Example",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Krupa.... Hello World Test\", function () {",
+							"    pm.response.to.have.body('\"hello world\"');",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://backend.127-0-0-1.sslip.io/",
+					"protocol": "http",
+					"host": [
+						"backend",
+						"127-0-0-1",
+						"sslip",
+						"io"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Jokes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Test 1: Check if the response time is less than 200 ms(milli seconds).\r",
+							"pm.test(\"Validating response time is less than 250 ms\", function()   {\r",
+							"pm.expect(pm.response.responseTime).to.be.below(250);}  );\r",
+							"\r",
+							" //Test 2: Check if the Status code is 200\r",
+							"pm.test(\" Validating Status code is 200\", function() {\r",
+							"pm.response.to.have.status(200);\r",
+							"}  );\r",
+							"\r",
+							"//Test 3:Check if Validating Status code name has string\r",
+							"var schema = {\r",
+							" \"items\": {\r",
+							"     \"type\": \"boolean\"\r",
+							"    }\r",
+							"};\r",
+							"var data1 = [true, false];\r",
+							"var data2 = [true, 123];\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"//Test 4:Check for Successful Get request\r",
+							"pm.test(\"Get request is successful\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+							"});\r",
+							"\r",
+							"//Test 5:Check if Content-Type is present\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"//Test 6: Check if the cookies do not exist.\r",
+							" pm.test(\"Validating Cookies do not exist\", function() \r",
+							" {\r",
+							"\"pm.expect(pm.cookies.has(\\\"session id\\\")).to.be.false;\"\r",
+							"}  );  \r",
+							"\r",
+							" // Test 7: Check if the Server exist in the Header.\r",
+							"pm.test(\"Validating Server exist in the header\", function() \r",
+							"{\r",
+							"\"pm.response.to.have.header(\\\"Server\\\");\"\r",
+							"}  ); \r",
+							"\r",
+							"// Test 8: Check if the Date exist in the Header.\r",
+							"pm.test(\"Validating Date exist in the header\", function() {\r",
+							"pm.response.to.have.header(\"Date\");\r",
+							"}  ); \r",
+							"    \r",
+							"// Test 9: Check if the Content-Length exist in the Header.\r",
+							"pm.test(\"Validating Content-Length exist in the header\", function() {\r",
+							"pm.response.to.have.header(\"Content-Length\");\r",
+							"}  ); \r",
+							"\r",
+							" // Test 10: Check if the Connection exist in the Header.\r",
+							"pm.test(\"Validating Connection exist in the header\", function() {\r",
+							"pm.response.to.have.header(\"Connection\")\r",
+							"}  );\r",
+							"\r",
+							"// Test 11: Check if the X-Powered-By exist in the Header.\r",
+							"pm.test(\"Validating X-Powered-By exist in the header\", function() {\r",
+							"pm.response.to.have.header(\"X-Powered-By\");\r",
+							"}  ); \r",
+							"\r",
+							"// Test 12: Check if the Access-Control-Allow-Origin exist in the Header.\r",
+							"pm.test(\"Validating Access-Control-Allow-Origin exist in the header\", function() {\r",
+							"pm.response.to.have.header(\"Access-Control-Allow-Origin\");\r",
+							"}  );\r",
+							"\r",
+							"// Test 13: Check if the ETag exist in the Header.\r",
+							"pm.test(\"Validating ETag exist in the header\", function() {\r",
+							"pm.response.to.have.header(\"ETag\");\r",
+							"}  ); \r",
+							"\r",
+							"// Test 14: Check if the cookies do not exist.\r",
+							"pm.test(\"Validating Cookies do not exist\", function() {\r",
+							"pm.expect(pm.cookies.has(\"session id\")).to.be.false;\r",
+							"}  ); \r",
+							"\r",
+							"//Test 15: Check if the reposne is successfully processed.\r",
+							"pm.test(\"Validating Response Body does not show error\", function() {\r",
+							"pm.response.to.not.have.body(\"error\") \r",
+							"});\r",
+							"\r",
+							" //Test 16: Check if the response body has a particular string\r",
+							"pm.test(\"Validaitng a string in the response body\", function() {\r",
+							"pm.expect(pm.response.text()).include(\"a new word\");  \r",
+							"}  );   \r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://backend.127-0-0-1.sslip.io/Jokes",
+					"protocol": "http",
+					"host": [
+						"backend",
+						"127-0-0-1",
+						"sslip",
+						"io"
+					],
+					"path": [
+						"Jokes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Jokes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Test 1: Check if the response time is less than 200 ms(milli seconds).\r",
+							"pm.test(\"Validating response time is less than 250 ms\", function()   {\r",
+							"pm.expect(pm.response.responseTime).to.be.below(250);}  );\r",
+							"\r",
+							" //Test 2: Check if the Status code is 200.\r",
+							"pm.test(\" Validating Status code is 200\", function() {\r",
+							"pm.response.to.have.status(200);\r",
+							"}  );\r",
+							"\r",
+							"//Test 3:Check if Validating Status code name has string\r",
+							"var schema = {\r",
+							"    \"items\": {\r",
+							"        \"type\": \"boolean\"\r",
+							"    }\r",
+							"};\r",
+							"var data1 = [true, false];\r",
+							"var data2 = [true, 123];\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"//Test 4:Check for Successful POST request\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+							"});\r",
+							"\r",
+							"//Test 5:Check if Content-Type is present\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"//Test 6: Check if the cookies do not exist.\r",
+							" pm.test(\"Validating Cookies do not exist\", function() \r",
+							" {\r",
+							"\"pm.expect(pm.cookies.has(\\\"session id\\\")).to.be.false;\"\r",
+							"}  );  \r",
+							"\r",
+							" // Test 7: Check if the Server exist in the Header.\r",
+							"pm.test(\"Validating Server exist in the header\", function() \r",
+							"{\r",
+							"\"pm.response.to.have.header(\\\"Server\\\");\"\r",
+							"}  ); \r",
+							"\r",
+							"// Test 8: Check if the Date exist in the Header.\r",
+							"pm.test(\"Validating Date exist in the header\", function() {\r",
+							"pm.response.to.have.header(\"Date\");\r",
+							"}  ); \r",
+							"    \r",
+							"// Test 9: Check if the Content-Length exist in the Header.\r",
+							"pm.test(\"Validating Content-Length exist in the header\", function() {\r",
+							"pm.response.to.have.header(\"Content-Length\");\r",
+							"}  ); \r",
+							"\r",
+							" // Test 10: Check if the Connection exist in the Header.\r",
+							"pm.test(\"Validating Connection exist in the header\", function() {\r",
+							"pm.response.to.have.header(\"Connection\")\r",
+							"}  );\r",
+							"\r",
+							"// Test 11: Check if the X-Powered-By exist in the Header.\r",
+							"pm.test(\"Validating X-Powered-By exist in the header\", function() {\r",
+							"pm.response.to.have.header(\"X-Powered-By\");\r",
+							"}  ); \r",
+							"\r",
+							"// Test 12: Check if the Access-Control-Allow-Origin exist in the Header.\r",
+							"pm.test(\"Validating Access-Control-Allow-Origin exist in the header\", function() {\r",
+							"pm.response.to.have.header(\"Access-Control-Allow-Origin\");\r",
+							"}  );\r",
+							"\r",
+							"// Test 13: Check if the ETag exist in the Header.\r",
+							"pm.test(\"Validating ETag exist in the header\", function() {\r",
+							"pm.response.to.have.header(\"ETag\");\r",
+							"}  ); \r",
+							"\r",
+							"// Test 14: Check if the cookies do not exist.\r",
+							"pm.test(\"Validating Cookies do not exist\", function() {\r",
+							"pm.expect(pm.cookies.has(\"session id\")).to.be.false;\r",
+							"}  ); \r",
+							"\r",
+							"//Test 15: Check if the reposne is successfully processed.\r",
+							"pm.test(\"Validating Response Body does not show error\", function() {\r",
+							"pm.response.to.not.have.body(\"error\") \r",
+							"});\r",
+							"\r",
+							" //Test 16: Check if the response body has a particular string\r",
+							"pm.test(\"Validaitng a string in the response body\", function() {\r",
+							"pm.expect(pm.response.text()).include(\"success\");  \r",
+							"}  );\r",
+							"\r",
+							"//Test 17: Check if Body matches string validate the response text\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"success\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n\"content\": \"Midterm Project\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://backend.127-0-0-1.sslip.io/Jokes",
+					"protocol": "http",
+					"host": [
+						"backend",
+						"127-0-0-1",
+						"sslip",
+						"io"
+					],
+					"path": [
+						"Jokes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Jokes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Test 1: Check if the response time is less than 200 ms(milli seconds).\r",
+							"pm.test(\"Validating response time is less than 250 ms\", function()   {\r",
+							"pm.expect(pm.response.responseTime).to.be.below(250);}  );\r",
+							"\r",
+							" //Test 2: Check if the Status code is 200.\r",
+							"pm.test(\" Validating Status code is 200\", function() {\r",
+							"pm.response.to.have.status(200);\r",
+							"}  );\r",
+							"\r",
+							"//Test 3:Check if Validating Status code name has string\r",
+							"var schema = {\r",
+							"    \"items\": {\r",
+							"        \"type\": \"boolean\"\r",
+							"    }\r",
+							"};\r",
+							"var data1 = [true, false];\r",
+							"var data2 = [true, 123];\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"//Test 4:Check for Successful PUT request\r",
+							"pm.test(\"Successful PUT request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+							"});\r",
+							"\r",
+							"//Test 5:Check if Content-Type is present\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"//Test 6: Check if the cookies do not exist.\r",
+							" pm.test(\"Validating Cookies do not exist\", function() \r",
+							" {\r",
+							"\"pm.expect(pm.cookies.has(\\\"session id\\\")).to.be.false;\"\r",
+							"}  );  \r",
+							"\r",
+							" // Test 7: Check if the Server exist in the Header.\r",
+							"pm.test(\"Validating Server exist in the header\", function() \r",
+							"{\r",
+							"\"pm.response.to.have.header(\\\"Server\\\");\"\r",
+							"}  ); \r",
+							"\r",
+							"// Test 8: Check if the Date exist in the Header.\r",
+							"pm.test(\"Validating Date exist in the header\", function() {\r",
+							"pm.response.to.have.header(\"Date\");\r",
+							"}  ); \r",
+							"    \r",
+							"// Test 9: Check if the Content-Length exist in the Header.\r",
+							"pm.test(\"Validating Content-Length exist in the header\", function() {\r",
+							"pm.response.to.have.header(\"Content-Length\");\r",
+							"}  ); \r",
+							"\r",
+							" // Test 10: Check if the Connection exist in the Header.\r",
+							"pm.test(\"Validating Connection exist in the header\", function() {\r",
+							"pm.response.to.have.header(\"Connection\")\r",
+							"}  );\r",
+							"\r",
+							"// Test 11: Check if the X-Powered-By exist in the Header.\r",
+							"pm.test(\"Validating X-Powered-By exist in the header\", function() {\r",
+							"pm.response.to.have.header(\"X-Powered-By\");\r",
+							"}  ); \r",
+							"\r",
+							"// Test 12: Check if the Access-Control-Allow-Origin exist in the Header.\r",
+							"pm.test(\"Validating Access-Control-Allow-Origin exist in the header\", function() {\r",
+							"pm.response.to.have.header(\"Access-Control-Allow-Origin\");\r",
+							"}  );\r",
+							"\r",
+							"// Test 13: Check if the ETag exist in the Header.\r",
+							"pm.test(\"Validating ETag exist in the header\", function() {\r",
+							"pm.response.to.have.header(\"ETag\");\r",
+							"}  ); \r",
+							"\r",
+							"// Test 14: Check if the cookies do not exist.\r",
+							"pm.test(\"Validating Cookies do not exist\", function() {\r",
+							"pm.expect(pm.cookies.has(\"session id\")).to.be.false;\r",
+							"}  ); \r",
+							"\r",
+							"//Test 15: Check if the reposne is successfully processed.\r",
+							"pm.test(\"Validating Response Body does not show error\", function() {\r",
+							"pm.response.to.not.have.body(\"error\") \r",
+							"});\r",
+							"\r",
+							" //Test 16: Check if the response body has a particular string\r",
+							"pm.test(\"Validaitng a string in the response body\", function() {\r",
+							"pm.expect(pm.response.text()).include(\"success\");  \r",
+							"}  );\r",
+							"\r",
+							"//Test 17: Check if Body matches string validate the response text\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"success\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"uuid\": \"229b35d3-43c8-4fa0-252-b825-703dd208095c\",\r\n        \r\n        \"content\": \"Update Midterm project to Midterm Exam\"\r\n    }\r\n    ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://backend.127-0-0-1.sslip.io/Jokes",
+					"protocol": "http",
+					"host": [
+						"backend",
+						"127-0-0-1",
+						"sslip",
+						"io"
+					],
+					"path": [
+						"Jokes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Jokes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"//Test 1: Check if the response time is less than 200 ms(milli seconds).\r",
+							"pm.test(\"Validating response time is less than 250 ms\", function()   {\r",
+							"pm.expect(pm.response.responseTime).to.be.below(250);}  );\r",
+							"\r",
+							" //Test 2: Check if the Status code is 200.\r",
+							"pm.test(\" Validating Status code is 200\", function() {\r",
+							"pm.response.to.have.status(200);\r",
+							"}  );\r",
+							"\r",
+							"//Test 3:Check if Validating Status code name has string\r",
+							"var schema = {\r",
+							"    \"items\": {\r",
+							"        \"type\": \"boolean\"\r",
+							"    }\r",
+							"};\r",
+							"var data1 = [true, false];\r",
+							"var data2 = [true, 123];\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"//Test 4:Check for Successful DEL request\r",
+							"pm.test(\"Successful DEL request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+							"});\r",
+							"\r",
+							"//Test 5:Check if Content-Type is present\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"//Test 6: Check if the cookies do not exist.\",\r",
+							" pm.test(\"Validating Cookies do not exist\", function() \r",
+							" {\r",
+							"\"pm.expect(pm.cookies.has(\\\"session id\\\")).to.be.false;\"\r",
+							"}  );  \r",
+							"\r",
+							" // Test 7: Check if the Server exist in the Header.\r",
+							"pm.test(\"Validating Server exist in the header\", function() \r",
+							"{\r",
+							"\"pm.response.to.have.header(\\\"Server\\\");\"\r",
+							"}  ); \r",
+							"\r",
+							"// Test 8: Check if the Date exist in the Header.\r",
+							"pm.test(\"Validating Date exist in the header\", function() {\r",
+							"pm.response.to.have.header(\"Date\");\r",
+							"}  ); \r",
+							"    \r",
+							"// Test 9: Check if the Content-Length exist in the Header.\r",
+							"pm.test(\"Validating Content-Length exist in the header\", function() {\r",
+							"pm.response.to.have.header(\"Content-Length\");\r",
+							"}  ); \r",
+							"\r",
+							" // Test 10: Check if the Connection exist in the Header.\r",
+							"pm.test(\"Validating Connection exist in the header\", function() {\r",
+							"pm.response.to.have.header(\"Connection\")\r",
+							"}  );\r",
+							"\r",
+							"// Test 11: Check if the X-Powered-By exist in the Header.\r",
+							"pm.test(\"Validating X-Powered-By exist in the header\", function() {\r",
+							"pm.response.to.have.header(\"X-Powered-By\");\r",
+							"}  ); \r",
+							"\r",
+							"// Test 12: Check if the Access-Control-Allow-Origin exist in the Header.\r",
+							"pm.test(\"Validating Access-Control-Allow-Origin exist in the header\", function() {\r",
+							"pm.response.to.have.header(\"Access-Control-Allow-Origin\");\r",
+							"}  );\r",
+							"\r",
+							"// Test 13: Check if the ETag exist in the Header.\r",
+							"pm.test(\"Validating ETag exist in the header\", function() {\r",
+							"pm.response.to.have.header(\"ETag\");\r",
+							"}  ); \r",
+							"\r",
+							"// Test 14: Check if the cookies do not exist.\r",
+							"pm.test(\"Validating Cookies do not exist\", function() {\r",
+							"pm.expect(pm.cookies.has(\"session id\")).to.be.false;\r",
+							"}  ); \r",
+							"\r",
+							"//Test 15: Check if the reposne is successfully processed.\r",
+							"pm.test(\"Validating Response Body does not show error\", function() {\r",
+							"pm.response.to.not.have.body(\"error\") \r",
+							"});\r",
+							"\r",
+							"\t\t\t\t\t\t\t\r",
+							"//Test 16:Validation of Delete Functionality\r",
+							"pm.test(\"Validation of Delete Functionality\",function(){\r",
+							"var jsondata=JSON.parse(responseBody);\r",
+							" jsondata.isDeleted=\"true\";   \r",
+							" })\r",
+							"\r",
+							" //Test 17: Check if the response body has a particular string\r",
+							"pm.test(\"Validaitng a string in the response body\", function() {\r",
+							"pm.expect(pm.response.text()).include(\"success\");  \r",
+							"}  );\r",
+							"\r",
+							"//Test 18: Check if Body matches string validate the response text\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"success\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"uuid\": \"229b35d3-43c8-4fa0-252-b825-703dd208095c\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://backend.127-0-0-1.sslip.io/Jokes",
+					"protocol": "http",
+					"host": [
+						"backend",
+						"127-0-0-1",
+						"sslip",
+						"io"
+					],
+					"path": [
+						"Jokes"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "query",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
